@@ -1,0 +1,23 @@
+- class_id: 10
+  policy_id: 1
+  filter_id: 1
+  protocol: 20
+  src_ip: 10.0.1.50
+  dst_ip: 192.168.15.1
+  src_port: 0
+  dst_port: 0
+  dscp: -1
+  vlan_tag: -1
+  http_domain: nothing
+
+- class_id: 11
+  policy_id: 1
+  filter_id: 2
+  protocol: 20
+  src_ip: 10.0.1.51
+  dst_ip: 192.168.15.2
+  src_port: 0
+  dst_port: 0
+  dscp: -1
+  vlan_tag: -1
+  http_domain: nothing

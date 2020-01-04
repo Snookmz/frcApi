@@ -1,0 +1,66 @@
+- id: 1
+  name: admin
+  description: unit test 'admin' group name description
+  administrator: true
+  view_access: Full
+  alerts_access: Full
+  systemhealth_access: Full
+  mngclients_access: Full
+  reports_access: Full
+  preferences_access: Full
+  mngpolicy_access: Full
+  mngsystem_access: Full
+  group_update: Full
+  user_update: Full
+  site_update: Full
+  alert_update: Full
+  filter_update: Full
+  report_update: Full
+  schedreport_update: Full
+  client_update: Full
+  clientsites_update: Full
+
+- id: 2
+  name: user
+  description: unit test 'user' group name description
+  administrator: false
+  view_access: View
+  alerts_access: View
+  systemhealth_access: View
+  mngclients_access: View
+  reports_access: View
+  preferences_access: View
+  mngpolicy_access: View
+  mngsystem_access: View
+  group_update: View
+  user_update: View
+  site_update: View
+  alert_update: View
+  filter_update: View
+  report_update: View
+  schedreport_update: View
+  client_update: View
+  clientsites_update: View
+
+- id: 3
+  name: guest
+  description: unit test group name description
+  administrator: true
+  view_access: Full
+  alerts_access: Full
+  systemhealth_access: Full
+  mngclients_access: Full
+  reports_access: Full
+  preferences_access: Full
+  mngpolicy_access: Full
+  mngsystem_access: Full
+  group_update: Full
+  user_update: Full
+  site_update: Full
+  alert_update: Full
+  filter_update: Full
+  report_update: Full
+  schedreport_update: Full
+  client_update: Full
+  clientsites_update: Full
+

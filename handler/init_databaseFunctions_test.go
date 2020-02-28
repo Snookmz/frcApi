@@ -23,7 +23,7 @@ func (d *NsDatabase) CreateGroup (g database.Group) (r database.Group, err error
 	return
 }
 
-func (d *NsDatabase) CreateUser (name string, password string, groupId int) (err error) {
+func (d *NsDatabase) CreateUser (name string, password string, groupId int) (user database.User, err error) {
 	return
 }
 
@@ -31,11 +31,11 @@ func (d *NsDatabase) DeleteClass (classId int) (err error) {
 	return
 }
 
-func (d *NsDatabase) DeleteConfigFilter (filterId int) (err error) {
+func (d *NsDatabase) DeleteConfigFilter (f database.ConfigFilter) (err error) {
 	return
 }
 
-func (d *NsDatabase) DeleteConfigShaper (shaperId int) (err error) {
+func (d *NsDatabase) DeleteConfigShaper (s database.ConfigShaper) (err error) {
 	return
 }
 
@@ -51,7 +51,11 @@ func (d *NsDatabase) EditGroup (g database.Group) (err error) {
 	return
 }
 
-func (d *NsDatabase) EditUser (userId int, u database.User) (err error) {
+func (d *NsDatabase) EditPassword (name string, oldPassword string, newPassword string) (sessionId string, err error) {
+	return
+}
+
+func (d *NsDatabase) EditUser (u database.User) (err error) {
 	return
 }
 

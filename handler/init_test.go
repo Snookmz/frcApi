@@ -5,17 +5,14 @@ import (
 	"bitbucket.org/turbosoftnetworks/netscope-api-v2/logger"
 	"bitbucket.org/turbosoftnetworks/netscope-api-v2/loggerAbstraction"
 	"bitbucket.org/turbosoftnetworks/netscope-api-v2/nscAbstraction"
+	"bitbucket.org/turbosoftnetworks/netscope-api-v2/nssAbstraction"
+	"bitbucket.org/turbosoftnetworks/netscope-api-v2/systemAbstraction"
 	"context"
 	"fmt"
 	"github.com/gorilla/mux"
-	"gopkg.in/testfixtures.v2"
 	"net/http"
 	"os"
 	"testing"
-)
-
-var (
-	fixtures *testfixtures.Context
 )
 
 func TestMain(m *testing.M) {
@@ -34,6 +31,12 @@ func testServer () http.Handler {
 
 	n :=&Nsc{}
 	h.NscFunctions = nscAbstraction.NewRegisteredNscFuncAbs(n)
+
+	ns := &Nss{}
+	h.NssFunctions = nssAbstraction.NewRegisteredNssFuncAbs(ns)
+
+	s := &NsSystem{}
+	h.SystemFunctions = systemAbstraction.NewRegisteredSystemFuncAbs(s)
 
 	var r *mux.Router
 	testMw := func (w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {

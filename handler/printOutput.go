@@ -19,7 +19,7 @@ func (h *Handler) PrintOutput(w http.ResponseWriter, returnJ ReturnJson) {
 		_, _ = io.WriteString(w, errJson)
 
 	} else {
-		h.Logger.LPrintf(3, "RESPONSE: %s", string(j))
+		h.Logger.LPrintf(4, "RESPONSE: %s", string(j))
 		if !returnJ.Success {
 			w.WriteHeader(400)
 		}

@@ -25,6 +25,11 @@ func ReadConfig (iniFile string) (i Ini, err error) {
 	i.Nsc.Port = cfg.Section("nsc").Key("port").MustInt(4213)
 	i.Nsc.Ip = cfg.Section("nsc").Key("ip").String()
 	i.Nsc.GoApiPort = cfg.Section("nsc").Key("go_api_port").MustInt(8002)
+	i.Nsc.TimeOut = cfg.Section("nsc").Key("timeDuration").MustInt(2000)
+
+	i.Nss.Port = cfg.Section("nss").Key("port").MustInt(9999)
+	i.Nss.Ip = cfg.Section("nss").Key("ip").String()
+	i.Nss.TimeOut = cfg.Section("nss").Key("timeDuration").MustInt(2000)
 
 	i.Log.File = cfg.Section("log").Key("file").String()
 

@@ -1,12 +1,12 @@
 package handler
 
-type Tele struct {
+type TeleCsv struct {
 	ControlPanel ControlPanel `csv:"controlPanel"`
 	EndGame EndGame `csv:"endGame"`
 	Performance TelePerformance `csv:"performance"`
 }
 
-type ControlPanel struct {
+type ControlPanelCsv struct {
 	FlPanelRotation bool `csv:"tele_flPanelRotation"`
 	IdPanelRotationTime int `csv:"tele_idPanelRotationTime"`
 	FlPanelPosition bool `csv:"tele_flPanelPosition"`
@@ -15,7 +15,7 @@ type ControlPanel struct {
 	NumPanelSuccess int `csv:"tele_numPanelSuccess"`
 }
 
-type EndGame struct {
+type EndGameCsv struct {
 	FlPark bool `csv:"tele_tele_flPark"`
 	IdClimb int `csv:"tele_idClimb"`
 	IdClimbGrabTime int `csv:"tele_idClimbGrabTime"`
@@ -28,7 +28,7 @@ type EndGame struct {
 	FlClimbFall bool `csv:"tele_flClimbFall"`
 }
 
-type TelePerformance struct {
+type TelePerformanceCsv struct {
 	NumCellAttempt int `csv:"tele_numCellAttempt"`
 	NumCellSuccess int `csv:"tele_numCellSuccess"`
 	FlOuter bool `csv:"tele_flOuter"`

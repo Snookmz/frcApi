@@ -17,23 +17,13 @@ func ReadConfig (iniFile string) (i Ini, err error) {
 
 	i.Api.Port = cfg.Section("api").Key("port").MustInt(8002)
 
-	i.Database.User = cfg.Section("database").Key("user").String()
-	i.Database.Password = cfg.Section("database").Key("password").String()
-	i.Database.Database = cfg.Section("database").Key("database").String()
-	i.Database.Host = cfg.Section("database").Key("host").String()
-
-	i.Nsc.Port = cfg.Section("nsc").Key("port").MustInt(4213)
-	i.Nsc.Ip = cfg.Section("nsc").Key("ip").String()
-	i.Nsc.GoApiPort = cfg.Section("nsc").Key("go_api_port").MustInt(8002)
-	i.Nsc.TimeOut = cfg.Section("nsc").Key("timeDuration").MustInt(2000)
-
-	i.Nss.Port = cfg.Section("nss").Key("port").MustInt(9999)
-	i.Nss.Ip = cfg.Section("nss").Key("ip").String()
-	i.Nss.TimeOut = cfg.Section("nss").Key("timeDuration").MustInt(2000)
+	i.Dir = cfg.Section("files").Key("dir").String()
 
 	i.Log.File = cfg.Section("log").Key("file").String()
 
-
+	i.DropBox.AccessToken = cfg.Section("dropBox").Key("accessToken").String()
+	i.DropBox.Path = cfg.Section("dropBox").Key("path").String()
+	i.DropBox.Url = cfg.Section("dropBox").Key("url").String()
 
 	return
 

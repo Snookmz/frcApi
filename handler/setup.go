@@ -1,23 +1,20 @@
 package handler
 
 import (
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/database"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/databaseAbstraction"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/loggerAbstraction"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/nscAbstraction"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/nssAbstraction"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/systemAbstraction"
 	"encoding/json"
+	"github.com/snookmz/frcApi/loggerAbstraction"
 )
 
 type Handler struct {
 	Logger *loggerAbstraction.RegisteredLogger
-	DbFunctions *databaseAbstraction.RegisteredDbFuncAbs
-	NscFunctions *nscAbstraction.RegisteredNscFuncAbs
-	NssFunctions *nssAbstraction.RegisteredNssFuncAbs
-	SystemFunctions *systemAbstraction.RegisteredSystemFuncAbs
-	User database.User
-	UserState database.UserState
+	Dir string
+	DropBox DropBox
+}
+
+type DropBox struct {
+	AccessToken string `json:"accessToken"`
+	Url string `json:"url"`
+	Path string `json:"path"`
 }
 
 type ReturnJson struct {

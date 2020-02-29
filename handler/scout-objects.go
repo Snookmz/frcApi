@@ -20,8 +20,8 @@ type TeamDetails struct {
 	NumMatch int `json:"numMatch"`
 	IdAlliance int `json:"idAlliance"`
 	IdDriveStation int `json:"idDriveStation"`
-	IdTeam int `json:"idTeam"`
-	TxScoutName int `json:"txScoutName"`
+	IdTeam string `json:"idTeam"`
+	TxScoutName string `json:"txScoutName"`
 }
 
 type MatchSetup struct {

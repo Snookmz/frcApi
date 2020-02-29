@@ -16,8 +16,8 @@ type Drive struct {
 }
 
 type QuickRatings struct {
-	FlAlliance int `json:"comm_flAlliance"`
-	FlStrategy int `json:"comm_flStrategy"`
+	FlAlliance bool `json:"comm_flAlliance"`
+	FlStrategy bool `json:"comm_flStrategy"`
 	FlOwnThing bool `json:"comm_flOwnThing"`
 	FlRecovery bool `json:"comm_flRecovery"`
 }

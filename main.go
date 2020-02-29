@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/cli"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/core"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/handler"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/logger"
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/loggerAbstraction"
 	"fmt"
 	"github.com/rs/cors"
+	"github.com/snookmz/frcApi/cli"
+	"github.com/snookmz/frcApi/core"
+	"github.com/snookmz/frcApi/handler"
+	"github.com/snookmz/frcApi/logger"
+	"github.com/snookmz/frcApi/loggerAbstraction"
 	"log"
 	"net/http"
 	"os"
@@ -32,6 +32,10 @@ func main() {
 	var h handler.Handler
 	logServer := logger.NewLogger(core.DEBUG, i.Log.File)
 	h.Logger = loggerAbstraction.NewRegisteredLogger(logServer)
+	h.Dir = i.Dir
+	h.DropBox.AccessToken = i.DropBox.AccessToken
+	h.DropBox.Path = i.DropBox.Path
+	h.DropBox.Url = i.DropBox.Url
 
 	if core.DEBUG >= 1 {
 		_, _ = fmt.Fprintf(os.Stderr, "Listening on port: %v\n", i.Api.Port)
@@ -48,7 +52,7 @@ func main() {
 		Debug: false,
 	})
 
-	router := h.GenerateRoutes(h.NsAuthenticationMw)
+	router := h.GenerateRoutes()
 
 	handlers := cors.Default().Handler(router)
 	handlers = c.Handler(handlers)

@@ -1,9 +1,9 @@
 package cli
 
 import (
-	"bitbucket.org/turbosoftnetworks/netscope-api-v2/core"
 	"flag"
 	"fmt"
+	"github.com/snookmz/frcApi/core"
 	"log"
 	"os"
 )

@@ -2,7 +2,7 @@ package handler
 
 type Pit struct {
 	ImperialUnits bool `json:"imperialUnits"`
-	Event FrcEvent `json:"event"`
+	Event string `json:"event"`
 	Details Details `json:"details"`
 	RobotStats RobotStats `json:"robotStats"`
 	PowerCells PowerCells `json:"powerCells"`
@@ -15,140 +15,104 @@ type Pit struct {
 }
 
 type Details struct {
-	IdTeam string`json:""`
-	Name string`json:""`
-	TxScoutName string`json:""`
+	IdTeam string`json:"idTeam"`
+	Name string`json:"name"`
+	TxScoutName string`json:"txScoutName"`
+}
+
+type RobotStats struct {
+	NumWeight int`json:"numWeight"`
+	NumHeight int`json:"numHeight"`
+	ImgTeamUniform string`json:"imgTeamUniform"`
+	ImgRobotFront string`json:"imgRobotFront"`
+	ImgRobotSide string`json:"imgRobotSide"`
+}
+
+type PowerCells struct {
+	FlCells bool`json:"flCells"`
+	FlIntakeGround bool`json:"flIntakeGround"`
+	FlIntakeHigh bool`json:"flIntakeHigh"`
+	NumStorage int`json:"numStorage"`
+	TxShooting string`json:"txShooting"`
+	FlTargetLow bool`json:"flTargetLow"`
+	FlTargetOuter bool`json:"flTargetOuter"`
+	FlTargetInner bool`json:"flTargetInner"`
 
 }
 
-export class RobotStats {
-numWeight number`json:""`
-numHeight number`json:""`
-imgTeamUniform string`json:""`
-imgRobotFront string`json:""`
-imgRobotSide string`json:""`
-constructor() {
-this.numWeight = 0`json:""`
-this.numHeight = 0`json:""`
-this.imgTeamUniform = ''`json:""`
-this.imgRobotFront = ''`json:""`
-this.imgRobotSide = ''`json:""`
-}
-}
-
-export class PowerCells {
-flCells boolean`json:""` // manipulate
-flIntakeGround boolean`json:""` // ground intake
-flIntakeHigh boolean`json:""`
-numStorage number`json:""`
-txShooting string`json:""`
-flTargetLow boolean`json:""`
-flTargetOuter boolean`json:""`
-flTargetInner boolean`json:""`
-constructor() {
-this.flCells = false`json:""`
-this.flIntakeGround = false`json:""`
-this.flIntakeHigh = false`json:""`
-this.numStorage = 0`json:""`
-this.txShooting = ''`json:""`
-this.flTargetLow = false`json:""`
-this.flTargetOuter = false`json:""`
-this.flTargetInner = false`json:""`
-}
+type Climb struct {
+	FlClimb bool`json:"flClimb"` // can climb
+	IdClimbType int`json:"idClimbType"`
+	NumClimbHeight int`json:"numClimbHeight"`
+	FlClimbSecure bool`json:"flClimbSecure"`
+	IdClimbGrab int`json:"idClimbGrab"` // 1=NA, 2=slow, 3=Med, 4=fast
+	IdClimbSpeed int`json:"idClimbSpeed"` // same as above
+	FlClimbTilt bool`json:"flClimbTilt"`
+	TxClimb string`json:"txClimb"`
+	IdClimbPos int`json:"idClimbPos"` // preferred position 1=NA, 2=Any, 3=Inner, 4=Middle, 5=Outer
+	FlClimbLevel bool`json:"flClimbLevel"` // can level generator
+	FlClimbLevelSelf bool`json:"flClimbLevelSelf"`
+	FlClimbLevelOther bool`json:"flClimbLevelOther"`
+	FlClimbMove bool`json:"flClimbMove"`
+	FlClimbOther bool`json:"flClimbOther"`
+	NumClimbOther int`json:"numClimbOther"` // buddies #
 }
 
-export class Climb {
-flClimb boolean`json:""` // can climb
-idClimbType string`json:""`
-numClimbHeight number`json:""`
-flClimbSecure boolean`json:""`
-idClimbGrab number`json:""` // 1=NA, 2=slow, 3=Med, 4=fast
-idClimbSpeed number`json:""` // same as above
-flClimbTilt boolean`json:""`
-txClimb string`json:""`
-idClimbPos number`json:""` // preferred position 1=NA, 2=Any, 3=Inner, 4=Middle, 5=Outer
-flClimbLevel boolean`json:""` // can level generator
-flClimbLevelSelf boolean`json:""`
-flClimbLevelOther boolean`json:""`
-flClimbMove boolean`json:""`
-flClimbOther boolean`json:""`
-numClimbOther number`json:""` // buddies #
-
-constructor() {
-this.flClimb = false`json:""`
-this.idClimbType = ''`json:""`
-this.numClimbHeight = 0`json:""`
-this.flClimbSecure = false`json:""`
-this.idClimbGrab = 1`json:""`
-this.idClimbSpeed = 1`json:""`
-this.flClimbTilt = false`json:""`
-this.txClimb = ''`json:""`
-this.idClimbPos = 1`json:""`
-this.flClimbLevel = false`json:""`
-this.flClimbLevelSelf = false`json:""`
-this.flClimbLevelOther = false`json:""`
-this.flClimbMove = false`json:""`
-this.flClimbOther = false`json:""`
-this.numClimbOther = 0`json:""`
+type PitControlPanel struct {
+	FlPanel bool`json:"flPanel"` // can manipulate control panel
+	FlPanelBrake bool`json:"flPanelBrake"`
+	FlPanelRotation bool`json:"flPanelRotation"`
+	FlPanelPos bool`json:"flPanelPos"`
+	FlPanelSensor bool`json:"flPanelSensor"`
+	TxPanelSensor string`json:"txPanelSensor"` // notes
 
 }
+
+type PitAuto struct {
+	FlAuto bool`json:"flAuto"` // can auto
+	FlAutoLine bool`json:"flAutoLine"`
+	FlAutoShoot bool`json:"flAutoShoot"` // can auto shoot
+	NumAutoShoot int`json:"numAutoShoot"` // int of balls
+	NumAutoLoad int`json:"numAutoLoad"` // pickup
+
 }
 
-export class ControlPanel {
-flPanel boolean`json:""` // can manipulate control panel
-flPanelBrake boolean`json:""`
-flPanelRotation boolean`json:""`
-flPanelPos boolean`json:""`
-flPanelSensor boolean`json:""`
-txPanelSensor string`json:""` // notes
-constructor() {
-this.flPanel = false`json:""`
-this.flPanelBrake = false`json:""`
-this.flPanelRotation = false`json:""`
-this.flPanelPos = false`json:""`
-this.flPanelSensor = false`json:""`
-this.txPanelSensor = ''`json:""`
-}
+type Record struct {
+	DtCreated string`json:"dtCreated"`
+	DtModified string`json:"dtModified"`
+	TxComputerName string`json:"txComputerName"`
 }
 
-export class Auto {
-flAuto boolean`json:""` // can auto
-flAutoLine boolean`json:""`
-flAutoShoot boolean`json:""` // can auto shoot
-numAutoShoot number`json:""` // number of balls
-numAutoLoad number`json:""` // pickup
-constructor() {
-this.flAuto = false`json:""`
-this.flAutoLine = false`json:""`
-this.flAutoShoot = false`json:""`
-this.numAutoShoot = 0`json:""`
-this.numAutoLoad = 0`json:""`
-}
-}
-
-export class Record {
-dtCreated string`json:""`
-dtModified string`json:""`
-txComputerName string`json:""`
-constructor() {
-this.dtCreated = ''`json:""`
-this.dtModified = ''`json:""`
-this.txComputerName = ''`json:""`
-}
-}
-
-
-export class TeamMember {
-team Team`json:""`
-id number`json:""`
-firstName string`json:""`
-lastName string`json:""`
-constructor() {
-this.team = new Team()`json:""`
-this.id = 0`json:""`
-this.firstName = ''`json:""`
-this.lastName = ''`json:""`
-}
-
+type FrcEvent struct {
+	Key string `json:"key"`
+	Name string `json:"name"`
+	EventCode string `json:"event_code"`
+	EventType int `json:"event_type"`
+	//district District `json:"district"`
+	City string `json:"city"`
+	StateProv string `json:"state_prov"`
+	Country string `json:"country"`
+	StartDate string `json:"start_date"`
+	EndDate string `json:"end_date"`
+	Year int `json:"year"`
+	ShortName string `json:"short_name"`
+	EventTypeString string `json:"event_type_string"`
+	Week int `json:"week"`
+	Address string `json:"address"`
+	PostalCode string `json:"postal_code"`
+	GmapsPlaceId string `json:"gmaps_place_id"`
+	GmapsUrl string `json:"gmaps_url"`
+	Lat float64 `json:"lat"`
+	Lng float64 `json:"lng"`
+	LocationName string `json:"location_name"`
+	Timezone string `json:"timezone"`
+	Website string `json:"website"`
+	FirstEventId string `json:"first_event_id"`
+	FirstEventCode string `json:"first_event_code"`
+	//webcasts Webcast[] `json:""`
+	DivisionKeys []string `json:"division_keys"`
+	ParentEventKey string `json:"parent_event_key"`
+	PlayoffType int `json:"playoff_type"`
+	PlayoffTypeString string `json:"playoff_type_string"`
 }
 

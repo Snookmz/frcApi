@@ -11,6 +11,7 @@ func (h *Handler) GenerateRoutes(middlewareFunctions ...func(w http.ResponseWrit
 	mainRouter.NotFoundHandler = http.HandlerFunc(h.NotFoundHandler)
 	mainRouter.PathPrefix("/help").HandlerFunc(h.HelpHandler)
 	mainRouter.PathPrefix("/scouts").HandlerFunc(h.ScoutsHandler).Methods("POST")
+	mainRouter.PathPrefix("/pits").HandlerFunc(h.PitsHandler).Methods("POST")
 
 	return
 

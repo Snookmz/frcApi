@@ -16,7 +16,7 @@ type ControlPanel struct {
 }
 
 type EndGame struct {
-	FlPark bool `csv:"tele_tele_flPark"`
+	FlPark bool `csv:"tele_flPark"`
 	IdClimb int `csv:"tele_idClimb"`
 	IdClimbGrabTime int `csv:"tele_idClimbGrabTime"`
 	IdClimbTime int `csv:"tele_idClimbTime"`

@@ -20,7 +20,7 @@ type TeamDetailsCsv struct {
 	NumMatch int `csv:"numMatch"`
 	IdAlliance int `csv:"idAlliance"`
 	IdDriveStation int `csv:"idDriveStation"`
-	IdTeam string `csv:"idTeam"`
+	IdTeam int `csv:"idTeam"`
 	TxScoutName string `csv:"txScoutName"`
 }
 

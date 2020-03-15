@@ -6,6 +6,7 @@ type Scout struct {
 	Auto ScoutAuto `json:"auto"`
 	Tele Tele `json:"tele"`
 	Comments Comments `json:"comments"`
+	TxCreationDate string `json:"txCreationDate"`
 }
 
 type ParentData struct {
@@ -20,7 +21,7 @@ type TeamDetails struct {
 	NumMatch int `json:"numMatch"`
 	IdAlliance int `json:"idAlliance"`
 	IdDriveStation int `json:"idDriveStation"`
-	IdTeam string `json:"idTeam"`
+	IdTeam int `json:"idTeam"`
 	TxScoutName string `json:"txScoutName"`
 }
 

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"time"
+	"strings"
 )
 
 func (h *Handler) SaveScoutsToDisk (scouts []Scout) (err error) {
@@ -20,13 +20,14 @@ func (h *Handler) SaveScoutsToDisk (scouts []Scout) (err error) {
 			return
 		}
 
-		var t time.Time
-		t = time.Now()
-		var tS string
-		tS = t.Format(time.UnixDate)
+		var event = strings.ToUpper(s.ParentData.TxEvent)
+		var device = strings.ToUpper(s.ParentData.DeviceName)
+		if device == "" {
+			device = "UNKNOWN"
+		}
 
 		var fileName string
-		fileName = fmt.Sprintf("%s %s %s  - %s.json", s.ParentData.DeviceName, s.ParentData.TeamDetails.IdTeam, s.ParentData.TxEvent, tS)
+		fileName = fmt.Sprintf("%s_MATCH_%v_%s_%s.json", event, s.ParentData.TeamDetails.IdTeam, device, s.TxCreationDate)
 
 		//err = writeCsvFile(fileName, scoutText)
 

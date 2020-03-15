@@ -15,7 +15,7 @@ type Pit struct {
 }
 
 type Details struct {
-	IdTeam string`json:"idTeam"`
+	IdTeam int`json:"idTeam"`
 	Name string`json:"name"`
 	TxScoutName string`json:"txScoutName"`
 }

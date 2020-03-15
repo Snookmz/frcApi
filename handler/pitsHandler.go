@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
+	"strings"
 )
 
 func (h *Handler) PitsHandler(w http.ResponseWriter, r *http.Request) {
@@ -39,13 +39,17 @@ func (h *Handler) PitsHandler(w http.ResponseWriter, r *http.Request) {
 	h.Logger.LPrintf(4, "Pits: %+v\n", pits)
 
 	for _, p := range pits {
-		var t time.Time
-		t = time.Now()
-		var tS string
-		tS = t.Format(time.UnixDate)
+
+		// [EVENT]_[MATCH or PIT]_[TEAM_No]_[DEVICE]_[YYYYMMDD_HHMMSS]
+
+		var event = strings.ToUpper(p.Event)
+		var device = strings.ToUpper(p.Record.TxComputerName)
+		if device == "" {
+			device = "UNKNOWN"
+		}
 
 		var fileName string
-		fileName = fmt.Sprintf("Pit for %s (%s).json", p.Details.IdTeam, tS)
+		fileName = fmt.Sprintf("%s_PIT_%v_%s_%s.json", event, p.Details.IdTeam, device, p.Record.DtCreated)
 
 		b, err := json.Marshal(p)
 		if err != nil {
@@ -73,3 +77,4 @@ func (h *Handler) PitsHandler(w http.ResponseWriter, r *http.Request) {
 	return
 
 }
+

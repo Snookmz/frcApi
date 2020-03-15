@@ -26,7 +26,7 @@ func (h *Handler) SendByteToDropBox(fileName string, data []byte) (err error) {
 	}
 
 	var arg Arg
-	arg.Path = "/5985/" + fileName
+	arg.Path = "/CSP/" + fileName
 	arg.Mode = "add"
 	arg.AutoRename = true
 	arg.Mute = true
